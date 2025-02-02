@@ -5,10 +5,9 @@ OS Baby is an advanced online music streaming platform built using Django (Pytho
 ## Features
 - User authentication and account management
 - Music playlist creation and management
-- Browse songs by categories (Hindi, English, etc.)
+- Browse songs by categories 
 - Recently played songs feature
 - Favorite music collection
-- Fully responsive UI with a smooth user experience
 
 ## Admin Credentials
 - **Username:** Os-Baby
