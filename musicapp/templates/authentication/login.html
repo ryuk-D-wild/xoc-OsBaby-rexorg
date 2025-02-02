@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load socialaccount %}
+{% block title %} MusicApp | {{ title }} {% endblock title %}
+{% block header %}
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000000;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: rgb(78, 255, 205);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgb(0, 0, 0);
+    width: 400px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+a {
+    color: #79a1bb;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #26ff00;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input[type="text"],
+input[type="password"] {
+    padding: 10px;
+    border: 1px solid #212b2a;
+    border-radius: 4px;
+    width: calc(100% - 22px);
+}
+
+button {
+    padding: 10px;
+    background-color: #b4ce5d;
+    color: rgb(88, 118, 116);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #5b8290;
+}
+
+.or-divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.or-divider::before,
+.or-divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #000000;
+}
+
+.or-divider:not(:empty)::before {
+    margin-right: .25em;
+}
+
+.or-divider:not(:empty)::after {
+    margin-left: .25em;
+}
+
+
+
+</style>
+{% endblock header %}
+
+{% block body %}
+<main role="main" class="container col-12 col-sm-8 col-md-6 col-lg-4 offset-sm-2 offset-md-3 offset-lg-4">
+  <br>
+  <div class="container">
+  <h1 class="text-center">Sign In</h1>
+  <br>
+  <a href="{% provider_login_url 'google' process='login' %}" class="btn btn-outline-dark btn-block">
+    <img width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
+    Sign in with Google
+  </a>
+</div>
+  <div class="or-divider"><i>or</i></div>
+  <form method="post">
+    {% csrf_token %}
+    {{form|crispy}}
+    <button class="btn btn-success btn-block" type="submit">Log In</button>
+    <p></p>
+    <!-- <p><a href="#" class="btn btn-danger btn-block" role="button"><i class="fa fa-google"></i> Sign up using Google</a></p> -->
+    
+    
+  </form>
+  <br>
+  <!-- <p>Already have an account? Please <a href="{% url 'signup' %}">log in</a>.</p> -->
+  <p>Don't have an account? Please <a href="{% url 'signup' %}">sign up</a> first.</p>
+  
+</main>
+{% endblock body %}
+
+
